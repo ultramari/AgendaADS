@@ -1,16 +1,18 @@
 #Agenda Telefonica
 import funcoes
 
-funcoes.bemvindo()
-#Opcoes do Usuario
-opcao = int(input())
+while True:
+	funcoes.bemvindo()
+	#Opcoes do Usuario
+	opcao = int(input())
 
-#Estrutura de controle
-if opcao == 1:
-	funcoes.adicionar()
-elif opcao == 2:
-	funcoes.listar()
-else:
-	funcoes.sair()
+	#Estrutura de controle
+
+	if opcao == 1:
+		funcoes.adicionar()
+	elif opcao == 2:
+		funcoes.listar()
+	else:
+		funcoes.sair()
 
 
