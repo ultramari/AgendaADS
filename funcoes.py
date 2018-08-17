@@ -21,11 +21,13 @@ def adicionar():
 	
 def listar():
 	print("Lista de Contatos")
+
 	agenda = open("agendatelefonica.csv")
-	numero = 0
-	while numero < 25:
-		print (agenda.readline())
-		numero = numero + 1
+	linhas = agenda.readlines()
+
+	for item in linhas:
+		print(item)
+
 	print("Listado correctamente")	
 	agenda.close()
 
