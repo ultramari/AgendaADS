@@ -3,6 +3,7 @@ def bemvindo():
 	print("Selecione uma Opcao")
 	print("1 - Adicionar um novo contato")
 	print("2 - Listar os contatos da agenda")
+	print("3 - Deletar um contato")
 	print("qualquer outra tecla para sair")
 
 def falha():
@@ -38,9 +39,9 @@ def buscar(valor):
 
 	return numIndex
 
-def delete():
+def delete(value):
 	array = readCSV()
-	index = 0
+	index = buscar(value)
 
 	if index == "" :
 		print("o registro não existe")
@@ -48,7 +49,6 @@ def delete():
 		array.pop(index)
 
 	writeCSV(array)
-	print(array)
 
 
 def readCSV():

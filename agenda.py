@@ -11,7 +11,7 @@ if opcao == 1:
 elif opcao == 2:
 	funcoes.listar()
 elif opcao == 3:
-	funcoes.delete()
+	funcoes.delete(input("Digite o contato"))
 else:
 	funcoes.sair()
 
