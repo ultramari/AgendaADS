@@ -8,11 +8,14 @@ while True:
 
 	#Estrutura de controle
 
-	if opcao == 1:
-		funcoes.adicionar()
-	elif opcao == 2:
-		funcoes.listar()
-	else:
-		funcoes.sair()
+                if opcao == 1:
+                        funcoes.adicionar()
+                elif opcao == 2:
+                        funcoes.listar()
+                elif opcao == 3:
+                        funcoes.buscar()
+                else:
+                        funcoes.sair()
+
 
 
