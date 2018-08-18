@@ -1,5 +1,6 @@
 #Agenda Telefonica
 import funcoes
+
 while 1:
 	funcoes.bemvindo()
 
