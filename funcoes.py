@@ -40,7 +40,7 @@ def buscar(valor):
 		if valor in array[index]:
 			numIndex = index
 
-	return (numIndex,array)
+	return (numIndex,item)
 
 def buscaNome(value):
 	var = buscar(value)
@@ -49,8 +49,8 @@ def buscaNome(value):
 	if var3 == "":
 		print("o contato não foi encontrado")
 	else:
-               for x in var2:
-                    print(x,"\n")
+               #for x in var2:
+                    print(var2,"\n")
 
 def delete(value):
 	array = readCSV()
