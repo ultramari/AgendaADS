@@ -7,52 +7,6 @@ def bemvindo():
 	print("4 - Deletar um contato")
 	print("qualquer outra tecla para sair")
 
-def falha():
-	print("Opcao Incorreta")
-
-def sair():
-	print(opcao)
-	exit()
-
-def adicionar():
-
-    print("Adicionar um registro")
-    agenda = open("agendatelefonica.csv",'a')
-    nome = input("Nome do Contato:")
-    telefone = input("Digite o telefone:")
-    print("Contato salvo com nome:",nome," e numero",telefone)
-    agenda.write(nome + ", " + telefone+"\n")
-    agenda.close()
-
-def listar():
-    #print("Lista de Contatos")
-
-    #agenda = open("agendatelefonica.csv")
-    #linhas = agenda.readlines()
-
-    #for item in linhas:
-    #	print("------------------------")
-    #	print(item)
-
-    #print("Listado corretamente")
-    #agenda.close()
-    return null
-
-def buscar(nome):
-    array = readCSV()
-    for item in array:
-        if nome in item:
-            print(item)
-            deletar(item)
-        else:
-            print("Nao apareceu")
-    return item
-
-def readCSV():
-    agenda = open("agendatelefonica.csv")
-    array = agenda.readlines()
-    agenda.close()
-    return array
 
 def falha():
     print("Opcao Incorreta")
@@ -86,23 +40,26 @@ def buscar(valor):
 		if valor in array[index]:
 			numIndex = index
 
-	return numIndex
+	return (numIndex,array)
 
 def buscaNome(value):
 	var = buscar(value)
-	if var == "":
+	var2 = var[1]
+	var3=var[0]
+	if var3 == "":
 		print("o contato não foi encontrado")
 	else:
-		print("O valor existe ")
+               for x in var2:
+                    print(x,"\n")
 
 def delete(value):
 	array = readCSV()
 	index = buscar(value)
-
+        
 	if index == "" :
 		print("o registro não existe")
 	else:
-		array.pop(index)
+		array.pop(index[0])
 		print("o registro foi deletado com sucesso!")
 
 	writeCSV(array)
