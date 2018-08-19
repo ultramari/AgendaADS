@@ -20,7 +20,7 @@ def sair():
 def adicionar():
 	print("Adicionar um registro")
 	agenda = open("agendatelefonica.csv",'a')
-	nome = input("Nome do Contato:").capitalize()
+	nome = input("Nome do Contato:").title()
 	telefone = input("Digite o telefone:")
 	print("Contato salvo com nome:",nome," e numero",telefone)
 	agenda.write(nome + ", " + telefone+"\n")
@@ -43,7 +43,7 @@ def buscar(valor):
 	return (numIndex,item,array)
 
 def buscaNome(value):
-	var = buscar(value.capitalize())
+	var = buscar(value.title())
 	var2 = var[1]
 	var3=var[0]
 	array= var[2]
@@ -51,7 +51,7 @@ def buscaNome(value):
 		print("o contato não foi encontrado")
 	else:
                #for x in var2:
-                    print(array[var3],"\n")
+                    print(array[var3] ,end='\n')
 
 def delete(value):
 	array = readCSV()
