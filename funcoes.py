@@ -8,10 +8,6 @@ def bemvindo():
 	print("qualquer outra tecla para sair")
 
 
-def falha():
-    print("Opcao Incorreta")
-
-
 def sair():
     print("saindo...")
     exit()
@@ -20,7 +16,7 @@ def sair():
 def adicionar():
 	print("Adicionar um registro")
 	agenda = open("agendatelefonica.csv",'a')
-	nome = input("Nome do Contato:").title()
+	nome = input("Nome do Contato:").lower()
 	telefone = input("Digite o telefone:")
 	print("Contato salvo com nome:",nome," e numero",telefone)
 	agenda.write(nome + ", " + telefone+"\n")
@@ -33,38 +29,43 @@ def listar():
 
 
 def buscar(valor):
-	array = readCSV()
+	ListaAgenda = readCSV()
 
-	numIndex = ""
-	for index, item in enumerate(array):
-		if valor in array[index]:
-			numIndex = index
+	resposta = {}
+	for index, item in enumerate(ListaAgenda):
+		nome , numero = ListaAgenda[index].split(",")
+		if valor in ListaAgenda[index]:
+			resposta[index] = nome
 
-	return (numIndex,item,array)
+	return resposta
 
 def buscaNome(value):
-	var = buscar(value.title())
-	var2 = var[1]
-	var3=var[0]
-	array= var[2]
-	if var3 == "":
-		print("o contato não foi encontrado")
+	response = buscar(value.lower())
+	if len(response) > 0 :
+		print("Foram encontrados ",len(response),"iguais a " + value + " resultados:")
+
+		for key in response:
+			print(key, " - ", response[key])
+
 	else:
-               #for x in var2:
-                    print(array[var3] ,end='\n')
+		print("Não foram encontrados valores")
 
 def delete(value):
 	array = readCSV()
-	index = buscar(value)
-        
-	if index == "" :
-		print("o registro não existe")
+	response = buscar(value.lower())
+
+	if len(response) > 0:
+		print("Foram encontrados ", len(response), "iguais a " + value + " resultados:")
+		for key in response:
+			print(key, " - ", response[key])
+
+		opt = int(input("Digite o ID que vc queira deletar"))
+
+		array.pop(opt)
+		writeCSV(array)
+
 	else:
-		array.pop(index[0])
-		print("o registro foi deletado com sucesso!")
-
-	writeCSV(array)
-
+		print("Não foram encontrados valores")
 
 def readCSV():
 	with open("agendatelefonica.csv") as agenda:
@@ -73,5 +74,5 @@ def readCSV():
 def writeCSV(array):
 	with open("agendatelefonica.csv", 'w') as agenda:
 		for item in array:
-			agenda.write(item)
+			agenda.write(item.lower())
 			
